@@ -322,61 +322,65 @@ function AddExperience({
         </div>
 
         {/* End date */}
-        <div className="flex gap-2 flex-col">
-          <FormLabel>End date</FormLabel>
-          <div className="flex gap-4 w-full">
-            <FormField
-              control={form.control}
-              name="end_date.month"
-              render={({ field }) => (
-                <FormItem className="w-full">
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl className="w-full">
-                      <SelectTrigger>
-                        <SelectValue placeholder="Month" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {months.map((type) => (
-                        <SelectItem key={type} value={type}>
-                          {type}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="end_date.year"
-              render={({ field }) => (
-                <FormItem className="w-full">
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl className="w-full">
-                      <SelectTrigger>
-                        <SelectValue placeholder="Year" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {years.map((type) => (
-                        <SelectItem key={type} value={type}>
-                          {type}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </FormItem>
-              )}
-            />
+        {!isCurrentWatch ? (
+          <div className="flex gap-2 flex-col">
+            <FormLabel>End date</FormLabel>
+            <div className="flex gap-4 w-full">
+              <FormField
+                control={form.control}
+                name="end_date.month"
+                render={({ field }) => (
+                  <FormItem className="w-full">
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl className="w-full">
+                        <SelectTrigger>
+                          <SelectValue placeholder="Month" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {months.map((type) => (
+                          <SelectItem key={type} value={type}>
+                            {type}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="end_date.year"
+                render={({ field }) => (
+                  <FormItem className="w-full">
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl className="w-full">
+                        <SelectTrigger>
+                          <SelectValue placeholder="Year" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {years.map((type) => (
+                          <SelectItem key={type} value={type}>
+                            {type}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </FormItem>
+                )}
+              />
+            </div>
           </div>
-        </div>
+        ) : (
+          ""
+        )}
 
         <Button type="submit">Save</Button>
         <Button variant="ghost" onClick={onCancel}>
