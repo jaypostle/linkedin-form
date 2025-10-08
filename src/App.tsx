@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { type JobExperienceType } from "./types";
 import AddExperienceForm from "./components/AddExperience";
 import { sampleJobExperiences } from "./sample-data";
-import type { JobExperienceType } from "./types";
 
 function App() {
   const [experienceList, setExperienceList] =
@@ -26,18 +26,14 @@ function App() {
           </div>
         )}
         {experienceList.map((jobExperience) => (
-          <div className="p-4" key={jobExperience.title}>
-            <h2 className="text-xl font-semibold">{jobExperience.title}</h2>
+          <div className="p-4" key={jobExperience.job_title}>
+            <h2 className="text-xl font-semibold">{jobExperience.job_title}</h2>
             <p>{jobExperience.company}</p>
             <p className="text-gray-500">
-              {jobExperience.startDate.toLocaleString("default", {
-                month: "long",
-              })}{" "}
-              {jobExperience.isCurrent
+              {jobExperience.start_date.month} {jobExperience.start_date.year}
+              {jobExperience.is_current
                 ? " - Present"
-                : ` - ${jobExperience.endDate?.toLocaleString("default", {
-                    month: "long",
-                  })} ${jobExperience.endDate?.getFullYear()}`}
+                : ` - ${jobExperience.end_date?.month} ${jobExperience.end_date?.year}`}
             </p>
           </div>
         ))}

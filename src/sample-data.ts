@@ -1,4 +1,27 @@
-import type { JobExperienceType } from "./types";
+import type {
+  CurrentJobExperienceType,
+  PreviousJobExperienceType,
+} from "./types";
+
+export const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+const currentYear = new Date().getFullYear();
+export const years = Array.from({ length: 16 }, (_, i) =>
+  String(currentYear - 10 + i)
+);
 
 export const employmentTypes = [
   "Self-employed",
@@ -7,20 +30,23 @@ export const employmentTypes = [
   "Apprenticeship",
   "Permanent Full-time",
 ] as const;
-export const sampleJobExperiences: JobExperienceType[] = [
+export const sampleJobExperiences: (
+  | CurrentJobExperienceType
+  | PreviousJobExperienceType
+)[] = [
   {
-    title: "Software Engineer",
-    employmentType: "Permanent Full-time",
+    job_title: "Software Engineer",
+    employment_type: "Permanent Full-time",
     company: "TechCorp Inc.",
-    isCurrent: true,
-    startDate: new Date(2020, 5, 1),
+    is_current: true,
+    start_date: { month: "March", year: "2024" },
   },
   {
-    title: "Frontend Developer",
-    employmentType: "Freelance",
+    job_title: "Frontend Developer",
+    employment_type: "Freelance",
     company: "Creative Solutions Ltd.",
-    isCurrent: false,
-    startDate: new Date(2018, 0, 1), // January 1, 2018
-    endDate: new Date(2020, 4, 31), // May 31, 2020
+    is_current: false,
+    start_date: { month: "March", year: "2024" },
+    end_date: { month: "March", year: "2025" },
   },
 ];
