@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { type JobExperienceType } from "./types";
+import { type JobExperienceType } from "./components/AddExperience/types";
 import AddExperienceForm from "./components/AddExperience";
 import { sampleJobExperiences } from "./sample-data";
 
